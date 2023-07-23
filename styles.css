@@ -1,0 +1,219 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: #6d8d8c; */
+}
+
+.container {
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: #7c25b6;
+  text-align: center;
+}
+h6{
+  margin: 1px;
+  text-align: center;
+}
+.search-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"], textarea {
+  padding: 10px;
+  width: 70%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #7531a2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #7531a2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Add transitions for smooth effects */
+}
+
+/* 
+  FOR CSS TOOK HELP FROM CHATGPT
+*/
+
+/* Hover effect */
+button:hover {
+  background-color: #9841c2; /* Change background color when hovered */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow when hovered */
+}
+
+/* Click (active) effect */
+button:active {
+  background-color: #5c2489; /* Change background color when clicked */
+  box-shadow: none; /* Remove the shadow on click */
+}
+
+.movies-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px; /* Optional: Set the gap between grid items */
+}
+
+.movie-card {
+  max-width: 200px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 10px 10px 0 0;
+  transition: background-color 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Hover effect */
+.movie-card:hover {
+  background-color: #f2f2f2; /* Change background color when hovered */
+  transform: translateY(-2px); /* Move the card 5 pixels upwards when hovered */
+}
+
+.movie-card img {
+  max-width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+.movie-card h5 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.pagination {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.movie-details {
+  display: none;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  width: 50%;
+  height:90%;
+  max-width:500px;
+  overflow: scroll;
+  margin: 10px auto;
+  z-index: 1000;
+}
+.modal-content img {
+  width: 60%;
+  margin-left:100px;
+  margin-left:100px;
+}
+.close {
+  color: #000;
+  position: fixed;
+  top: 20px;
+  right: 40px;
+  font-size: 40px;
+  font-weight: bold;
+}
+.form-for-user-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
+textarea {
+  align-self: center;
+}
+
+
+.rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.rating-container p {
+  margin-right: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.rating-container label {
+  position: relative;
+  font-size: 30px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.rating-container label input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.rating-container label span:before {
+  content: '\2605'; /* Unicode star symbol (★) */
+}
+
+.rating-container label input:checked ~ span:before {
+  color: #f39c12; /* Color for the checked stars */
+}
+
+.rating-buttons{
+  display: flex;
+  justify-content: center;
+}
+
+
+@media (max-width: 767px) { 
+  .movies-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px; /* Optional: Set the gap between grid items */
+  }
+  
+  .modal-content img {
+    margin-left:50px !important;
+  }
+}
+@media (max-width: 42px) {
+  .modal-content img {
+    width: 50%;
+    margin-left:92px;
+  }
+}
+
+
+@media (max-width: 1023px) {
+  .modal-content img {
+    width: 50%;
+    margin-left:92px;
+  }
+}
+
+
+
