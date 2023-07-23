@@ -6,7 +6,7 @@ let userFeedbackArray = [];
 const searchStatus = document.getElementById('search-status');
 
 initializePage();
-// **************** Update the feebacks in LOCAL STORAGE
+// **************** initialize the arrays and eventlistener and pre search the movie BATMAN
 async function initializePage() {
   // add event listeners
   document.getElementById("searchButton").addEventListener("click", performSearch);
@@ -20,12 +20,6 @@ async function initializePage() {
   displayMovies(await fetchMovies());
   updatePagination(); 
 }
-
-// **************** Update the feebacks in LOCAL STORAGE
-function updateFeedbacksInLocalStorage() {
-  localStorage.setItem("feedback", JSON.stringify(userFeedbackArray));
-}
-
 // **************** Fetch Movies from the API
 async function fetchMovies() {
   searchStatus.innerHTML = ``;
@@ -60,6 +54,26 @@ async function fetchMovieDetails(movieID) {
     return []; // Return an empty array in case of an error
   }
 }
+// **************** Update the feebacks in LOCAL STORAGE
+function updateFeedbacksInLocalStorage() {
+  localStorage.setItem("feedback", JSON.stringify(userFeedbackArray));
+}
+
+
+
+// **************** Search Operation Handler
+async function performSearch() {
+  const searchInput = document.getElementById("searchInput");
+  searchQuery = searchInput.value.trim();
+
+  if (searchQuery !== "") {
+    currentPage = 1; // reinitialize
+    const movies = await fetchMovies();
+    displayMovies(movies);
+    updatePagination();
+  }
+}
+
 
 // **************** Function to handle the pagination 
 function updatePagination() {
@@ -213,18 +227,4 @@ function saveRatingAndComment(movieId) {
     message.innerHTML = `Please enter both the field`;
   }
   updateFeedbacksInLocalStorage();
-}
-
-
-// **************** Search Operation Handler
-async function performSearch() {
-  const searchInput = document.getElementById("searchInput");
-  searchQuery = searchInput.value.trim();
-
-  if (searchQuery !== "") {
-    currentPage = 1; // reinitialize
-    const movies = await fetchMovies();
-    displayMovies(movies);
-    updatePagination();
-  }
 }
