@@ -17,7 +17,8 @@ async function initializePage() {
     userFeedbackArray = JSON.parse(localStorage.getItem("feedback"));
   }
   // fetch data
-  displayMovies(await fetchMovies());
+  moviesOnCurrentPage = await fetchMovies();
+  displayMovies(moviesOnCurrentPage);
   updatePagination(); 
 }
 // **************** Fetch Movies from the API
@@ -91,8 +92,8 @@ function updatePagination() {
 // **************** Show the next page if any
 async function showNextPage() {
   ++currentPage;
+  if(moviesOnCurrentPage.length<10) {
   const nextTenMovies = await fetchMovies();
-  if(nextTenMovies.length) {
     displayMovies(nextTenMovies);
     updatePagination();
   } 
