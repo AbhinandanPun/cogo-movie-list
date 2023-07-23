@@ -162,14 +162,14 @@ async function showMovieDetails(movie) {
   const movieDetailsHtmlElement = document.getElementById("movieDetails");
   movieDetailsHtmlElement.style.display = "block";
 
+
+
+  const movieDetails = await fetchMovieDetails(movie.imdbID); // get the details of the movie
   const posterImg = document.createElement("img");
   posterImg.src = movie.Poster;
   posterImg.alt = movie.Title;
 
   movieDetailsHtmlElement.appendChild(posterImg);
-
-  const movieDetails = await fetchMovieDetails(movie.imdbID); // get the details of the movie
-
   // **************** dynamically add the <h6> tags for the details
   Object.keys(movieDetails).forEach(key => {
     const hTag = document.createElement("h6");
