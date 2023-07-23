@@ -92,7 +92,7 @@ function updatePagination() {
 // **************** Show the next page if any
 async function showNextPage() {
   ++currentPage;
-  if(moviesOnCurrentPage.length<10) {
+  if(moviesOnCurrentPage.length==10) {
   const nextTenMovies = await fetchMovies();
     displayMovies(nextTenMovies);
     updatePagination();
